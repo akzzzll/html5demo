@@ -13,10 +13,10 @@
         var fillcolor = "#FF0000";
         var strokecolor = "#000000";
 
-        var shadowOffsetX = 0;
-        var shadowOffsetY = 0;
+        var shadowOffsetX = 1;
+        var shadowOffsetY = 1;
         var shadowColor = "#FFFFFF";
-        var shadowBlur = 2;
+        var shadowBlur = 1;
         var globalAlpha = 1;
 
         function canvasApp() {
@@ -118,7 +118,20 @@
             canvasApp();
         }
 
+        function textshadowy_onchange(e) {
+            shadowOffsetY = e.value;
+            canvasApp();
+        }
 
+        function textshadowblur_onchange(e) {
+            shadowBlur = e.value;
+            canvasApp();
+        }
+
+        function textshadowColor_onchange(e) {
+            shadowColor = "#" + e.value;
+            canvasApp();
+        }
 
     </script>
 </head>
@@ -176,15 +189,21 @@
     <div style="padding: 50 0 0 0;">
         阴影部分：
         <br />
-        Alpha：<input id="textalpha" type="range" max="1" min="0.1" value="1" onchange="textalpha_onchange(this)" />
+        Alpha：<input id="textalpha" type="range" max="1" min="0.01" step="0.1" value="1"
+            onchange="textalpha_onchange(this)" />
         <br />
         Shadow X：
-        <input id="textshadowx" type="range" max="50" min="-50" value="0" onchange="textshadowx_onchange(this)" />
+        <input id="textshadowx" type="range" max="100" min="-100" value="1" onchange="textshadowx_onchange(this)" />
         <br />
         Shadow Y:
-        <input id="textshadowy" type="range" max="50" min="-50" value="0" onchange="textshadowy_onchange(this)" />
+        <input id="textshadowy" type="range" max="100" min="-100" value="1" onchange="textshadowy_onchange(this)" />
         <br />
-
+        Shadow Blur：
+        <input id="textshadowblur" type="range" max="100" min="1" step="1" value="1" onchange="textshadowblur_onchange(this)" />
+        <br />
+        Shadow Color：
+        <input id="textshadowColor" type="text" class="color" value="FFFFFF" onchange="textshadowColor_onchange(this)" />
+        <br />
     </div>
 </body>
 </html>
